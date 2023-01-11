@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import FilterOptions from './components/Filter/FilterOptions'
+import MediaContainer from './components/MediaContainer/MediaContainer'
 
-function App() {
+const App = () => {
+  const [mediaType, setMediaType] = useState('movie');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Box>
+      <Box className='flex flex-col md:flex-row'>
+        <Box className='w-full md:w-[25%] h-full md:h-screen bg-[#3944f7] static md:sticky top-0 left-0'>
+          <FilterOptions setMediaType={setMediaType} />
+        </Box>
+        <Box className='w-full'>
+          <MediaContainer mediaType={mediaType} />
+        </Box>
+      </Box>
+    </Box>
+  )
 }
 
-export default App;
+export default App
