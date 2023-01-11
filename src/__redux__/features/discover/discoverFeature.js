@@ -9,13 +9,13 @@ const initialState = {
 
 
 export const asyncFetchDiscover = createAsyncThunk('fetchDiscoverMovies&TV', async ({mediaType, page}) => {
-    const DiscoverURL = `https://api.themoviedb.org/3/discover/${mediaType}?api_key=6671af2f9a362db938ad91287e63b2fe&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`;
+    const DiscoverURL = `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`;
     const response = await axios.get(DiscoverURL);
     return response.data;
 });
 
 export const asyncSearchShows = createAsyncThunk('searchShows', async ({ mediaType, searchQuery }) => {
-    const SearchURL = `https://api.themoviedb.org/3/search/${mediaType}?api_key=6671af2f9a362db938ad91287e63b2fe&language=en-US&query=${searchQuery}&page=1&include_adult=false`;
+    const SearchURL = `https://api.themoviedb.org/3/search/${mediaType}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`;
     const response = await axios.get(SearchURL);
     return response.data;
 });
